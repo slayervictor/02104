@@ -31,6 +31,14 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
+    public static Scene getScene() {
+        return scene;
+    }
+
+    public static void setScene(Scene scene) {
+        App.scene = scene;
+    }
+
     public static void main(String[] args) {
         launch();
     }
