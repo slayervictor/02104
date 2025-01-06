@@ -1,6 +1,14 @@
 package GameBoard;
 
 public class Model {
+
+}
+
+class Block {
+    
+}
+
+class Blockgrid {
     private int[][] blockGrid;
     private int height;
     private int width;
