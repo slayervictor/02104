@@ -1,6 +1,6 @@
 package com.example;
 
-import GameBoard.View;
+import MainMenu.View;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;  // Denne import skal være der!
 import javafx.scene.Scene;
@@ -15,10 +15,10 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Opretter en instans af GameBoard.View
-        View gameBoardView = new View();
+        View MainMenuView = new View();
 
         // Opretter en scene for gameboardet
-        scene = gameBoardView.createGameboardView();
+        scene = MainMenuView.createMainMenuView();
 
         // Sætter scenen på stage (primær scene)
         stage.setScene(scene);
