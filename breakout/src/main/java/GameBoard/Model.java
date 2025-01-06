@@ -39,3 +39,19 @@ public class Model {
 
     
 }
+
+class Ball {
+    private int[] velo = new int[]{0,0};    //change inital velocity when program works
+    private int[] pos = new int[]{0,0};
+    
+    public void setVelo(int dX, int dY) {
+        velo[0] = dX;
+        velo[1] = dY;
+    }
+
+    public void setPos(int x, int y) {
+        pos[0] = x;
+        pos[1] = y;
+    }
+}
+
