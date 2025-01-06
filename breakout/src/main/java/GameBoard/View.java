@@ -19,16 +19,12 @@ public class View  {
 
         double sceneWidth = 32*9;
         int sceneHeight = 32*16;
-        Rectangle topWall = new Rectangle(0, 0, sceneWidth, 20);
-        topWall.setFill(Color.WHITE);
-        Rectangle bottomWall = new Rectangle(0, sceneHeight - 20, sceneWidth, 20);
-        bottomWall.setFill(Color.WHITE);
-        Rectangle leftWall = new Rectangle(0, 0, 20, sceneHeight);
+        Rectangle leftWall = new Rectangle(0, 0, 16, sceneHeight);
         leftWall.setFill(Color.WHITE);
-        Rectangle rightWall = new Rectangle(sceneWidth - 20, 0, 20, sceneHeight);
+        Rectangle rightWall = new Rectangle(sceneWidth - 16, 0, sceneWidth, sceneHeight);
         rightWall.setFill(Color.WHITE);
         StackPane root = new StackPane(); 
-        root.getChildren().addAll(topWall, bottomWall, leftWall, rightWall);
+        root.getChildren().addAll(leftWall, rightWall);
         Scene scene = new Scene(root, sceneWidth, sceneHeight); 
         // Opretter layout og tilføjer knappen
         StackPane layout = new StackPane();
