@@ -32,6 +32,7 @@ public class View  {
 
         // Returnerer en Scene med knappen
         return scene;  // Størrelse på gameboard
+
     }
 
     // Metode til at starte spillet (kan bruges til at skifte scene eller starte spillet)
