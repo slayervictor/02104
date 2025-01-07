@@ -76,7 +76,7 @@ class CollisionDetection {
         double blockWidth = block.width; // block.getWidth();
         double blockHeight = block.height; // block.getHeight();
 
-        // Nearest point to the ball from wall of blocks 
+        // Nearest point from ball center to wall of blocks 
         double nearestX = Math.max(blockX, Math.min(ballX, blockX + blockWidth));
         double nearestY = Math.max(blockY, Math.min(ballY, blockY + blockHeight));
 
@@ -86,5 +86,20 @@ class CollisionDetection {
 
         // Check if distance is less than radius of ball
         return (deltaX * deltaX + deltaY * deltaY) < (ballRadius * ballRadius);
+    }
+    public static String checkCollision(double ballX, double ballY, double ballRadius, Block block, double sceneWidth, double sceneHeight) {
+
+        // Check collision with left wall
+        if (ballX - ballRadius <= 0) {
+            // return gameover; 
+        }
+
+        // Check collision with right wall
+        if (ballX + ballRadius >= sceneWidth - 11) {
+            // return gameover;
+        }
+
+        // No collision
+        // return ; (When it's not gameover)
     }
 }
