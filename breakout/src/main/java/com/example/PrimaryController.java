@@ -6,13 +6,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import GameBoard.*;
+// import GameBoard.*;
 
 public class PrimaryController {
 
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
+    }
+
+    private void printHello() {
+        System.out.println("Hello");
     }
 
 }
