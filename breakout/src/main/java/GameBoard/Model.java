@@ -91,9 +91,10 @@ class Ball {
     public void roofBounce(int[] velo) {
         velo[1] *= -1;
     }
+}
 
 class CollisionDetection {
-    public static boolean checkCollision(double ballX, double ballY, double ballRadius, Block block) {
+    public boolean checkCollision(double ballX, double ballY, double ballRadius, Block block) {
         // Get the block position and dimensions from the Block object
         double blockX = block.x; // block.getX();
         double blockY = block.y; // block.getY();
@@ -111,7 +112,8 @@ class CollisionDetection {
         // Check if distance is less than radius of ball
         return (deltaX * deltaX + deltaY * deltaY) < (ballRadius * ballRadius);
     }
-    public static String checkCollision(double ballX, double ballY, double ballRadius, Block block, double sceneWidth, double sceneHeight) {
+
+    public String checkCollision(double ballX, double ballY, double ballRadius, Block block, double sceneWidth, double sceneHeight) {
 
         // Check collision with left wall
         if (ballX - ballRadius <= 0) {
@@ -125,5 +127,6 @@ class CollisionDetection {
 
         // No collision
         // return ; (When it's not gameover)
+        return "";
     }
 }
