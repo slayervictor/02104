@@ -1,9 +1,12 @@
 package com.example;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,7 +20,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 32*9, 32*16);
+        scene = new Scene(loadFXML("primary"), 672, 970);
+        scene.setFill(Color.web("#000000")); // Background
+
         stage.setScene(scene);
         stage.show();
     }
