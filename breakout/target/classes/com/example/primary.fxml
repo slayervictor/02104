@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -19,16 +18,15 @@
       <Rectangle fx:id="ball" arcWidth="5.0" fill="#9e9e9e" height="10.0" layoutX="351.0" layoutY="843.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="13.0" />
       <Rectangle arcWidth="5.0" fill="#cccccc" height="56.0" layoutX="41.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="12.0" />
       <Rectangle arcWidth="5.0" fill="#cccccc" height="56.0" layoutX="418.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="12.0" />
-      <Text fill="#cccccc" layoutX="53.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textAlignment="CENTER" wrappingWidth="85.98307228088379">
+      <Text fx:id="score" fill="#cccccc" layoutX="53.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textAlignment="CENTER" wrappingWidth="85.98307228088379">
          <font>
             <Font name="Comic Sans MS" size="45.0" />
          </font>
       </Text>
-      <Text fill="#cccccc" layoutX="430.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textAlignment="CENTER" wrappingWidth="85.98307228088379">
+      <Text fx:id="highscore" fill="#cccccc" layoutX="430.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textAlignment="CENTER" wrappingWidth="85.98307228088379">
          <font>
             <Font name="Comic Sans MS" size="45.0" />
          </font>
       </Text>
-      <Circle fx:id="circ" fill="DODGERBLUE" layoutX="336.0" layoutY="585.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
