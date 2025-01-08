@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -31,9 +30,11 @@ public class App extends Application {
         scene = new Scene(rootPane, 672, 970);
 
         scene.setFill(Color.web("#000000")); // Background
-
+        
         startTimeline(controller);
-
+        scene.setOnKeyPressed(event -> {
+            controller.inputHandling(event);
+        });
         stage.setScene(scene);
         stage.show();
     }

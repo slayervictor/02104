@@ -32,30 +32,18 @@ public class PrimaryController {
         }
     
     }
-/*
+
     public void inputHandling(KeyEvent event) {
         switch (event.getCode()) {
             case L:
                 pad.move(hSpeed);
                 System.out.println("L was pressed");
                 break;
+            
             case H:
                 pad.move(-hSpeed);
-                System.out.println("H was pressed");
+                System.out.println("H was Pressed");
                 break;
-            default:
-                break;
-        }
-    }
-    */
-
-    public void inputHandling(KeyEvent event) {
-        if (event.getCode() == KeyCode.L) {
-            pad.move(hSpeed);
-            System.out.println("L was pressed");
-        } else if (event.getCode() == KeyCode.H) {
-            pad.move(-hSpeed);
-            System.out.println("H was Pressed");
         }
     }
 }
