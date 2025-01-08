@@ -53,7 +53,6 @@ class Blockgrid {
     
 }
 
-// Change int to double
 class Ball {
     private int[] velo = new int[]{0,0};    //change inital velocity when program works
     private int[] pos = new int[]{0,0};
