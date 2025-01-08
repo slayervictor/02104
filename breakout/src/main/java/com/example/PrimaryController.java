@@ -4,10 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.input.*;
 
 import javafx.scene.shape.Rectangle;
+import javafx.scene.input.KeyEvent;
 import java.util.Random;
 
 
 public class PrimaryController {
+    private double hSpeed = 7;
     @FXML
     private Rectangle paddle; 
 
@@ -30,8 +32,21 @@ public class PrimaryController {
             // Alt der skal køres en gang, skal tilføjes her
             create = true;
         }
-    pad.movePaddle(7);
     
-}
+    }
 
+
+
+    public void inputHandling(KeyEvent event) {
+        switch (event.getCode()) {
+            case RIGHT:
+                pad.move(hSpeed);
+                break;
+            case LEFT:
+                pad.move(-hSpeed);
+                break;
+            default:
+                break;
+        }
+    }
 }

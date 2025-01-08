@@ -9,8 +9,8 @@ public class Paddle {
         this.paddle = paddle;
     }
 
-    public void movePaddle(double distance) {
-        paddle.setLayoutX(paddle.getLayoutX() + distance);  
+    public void move(double distance) {
+        paddle.setLayoutX(paddle.getLayoutX() + distance);
     }
 
     public Rectangle getObject() {
