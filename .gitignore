@@ -1,1 +1,8 @@
 **/*.class
+# Maven
+target/
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iml
