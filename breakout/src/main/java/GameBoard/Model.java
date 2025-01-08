@@ -39,6 +39,7 @@ class Blockgrid {
         return blockGrid(width, height)[0].length;
     }
 
+
     public String toString() {
         String str = "";
         for (int i = 0; i < getBlockGridHeight(); i++) {
@@ -49,9 +50,10 @@ class Blockgrid {
         }
         return str;
     }
+}
 
     
-}
+
 
 class Ball {
     private int[] velo = new int[]{0,0};    //change inital velocity when program works
