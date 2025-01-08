@@ -1,10 +1,13 @@
 package com.example;
 
+
 import GameBoard.Paddle;
 import javafx.fxml.FXML;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.input.KeyEvent;
 
 public class PrimaryController {
+    private double hSpeed = 7;
     @FXML
     private Rectangle paddle; 
 
@@ -13,8 +16,17 @@ public class PrimaryController {
     public void initialize() {
         pad = new Paddle(paddle); 
     }
-
-    public void onStep() {
-        pad.movePaddle(7);  
+    
+    public void inputHandling(KeyEvent event) {
+        switch (event.getCode()) {
+            case RIGHT:
+                pad.move(hSpeed);
+                break;
+            case LEFT:
+                pad.move(-hSpeed);
+                break;
+            default:
+                break;
+        }
     }
 }
