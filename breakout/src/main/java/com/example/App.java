@@ -20,11 +20,13 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary.fxml"));
         Parent root = fxmlLoader.load();
-
+        
+        stage.setResizable(false);
         PrimaryController controller = fxmlLoader.getController();
         scene = new Scene(root, 672, 970);
+    
         scene.setFill(Color.web("#000000")); // Background
-
+        
         startTimeline(controller);
 
         stage.setScene(scene);
@@ -51,6 +53,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        System.setProperty("prism.allowhidpi", "false");
+        launch(args);
     }
 }
