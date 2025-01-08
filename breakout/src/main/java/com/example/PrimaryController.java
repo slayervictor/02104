@@ -24,8 +24,6 @@ public class PrimaryController {
         
     }
     
-    
-
     public void onStep() {
         if (create == false) { // Run once
             blocks = new BlockGrid();
@@ -34,19 +32,30 @@ public class PrimaryController {
         }
     
     }
-
-
-
+/*
     public void inputHandling(KeyEvent event) {
         switch (event.getCode()) {
-            case RIGHT:
+            case L:
                 pad.move(hSpeed);
+                System.out.println("L was pressed");
                 break;
-            case LEFT:
+            case H:
                 pad.move(-hSpeed);
+                System.out.println("H was pressed");
                 break;
             default:
                 break;
+        }
+    }
+    */
+
+    public void inputHandling(KeyEvent event) {
+        if (event.getCode() == KeyCode.L) {
+            pad.move(hSpeed);
+            System.out.println("L was pressed");
+        } else if (event.getCode() == KeyCode.H) {
+            pad.move(-hSpeed);
+            System.out.println("H was Pressed");
         }
     }
 }
