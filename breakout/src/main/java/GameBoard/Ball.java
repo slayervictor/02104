@@ -39,4 +39,6 @@ public class Ball {
     public void roofBounce(int[] velo) {
         velo[1] *= -1;
     }
+
+
 }

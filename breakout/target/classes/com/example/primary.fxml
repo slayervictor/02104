@@ -10,7 +10,7 @@
       <Rectangle fill="#cccccc" height="859.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
       <Rectangle fill="#cccccc" height="865.0" layoutX="662.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
       <Rectangle arcWidth="5.0" fill="#cccccc" height="34.0" layoutX="4.0" layoutY="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="664.0" />
-      <Rectangle fx:id="paddle" fill="DODGERBLUE" height="17.0" layoutX="336.0" layoutY="866.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="42.0" />
+      <Rectangle fx:id="paddle" fill="DODGERBLUE" height="17.0" layoutX="336.0" layoutY="866.0" onKeyPressed="#inputHandling" onKeyTyped="#inputHandling" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="42.0" />
       <Rectangle arcWidth="5.0" fill="DODGERBLUE" height="32.0" layoutY="859.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
       <Rectangle arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="662.0" layoutY="859.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
       <Rectangle arcWidth="5.0" fill="#cccccc" height="79.0" layoutY="891.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
