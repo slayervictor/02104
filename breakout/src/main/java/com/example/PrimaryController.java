@@ -19,7 +19,7 @@ public class PrimaryController {
 
     private boolean create = false;
 
-    double velocity = 0;
+    double velocity, velocityGoal;
 
     public void initialize() {
         pad = new Paddle(paddle); 
@@ -32,18 +32,25 @@ public class PrimaryController {
             // Alt der skal køres en gang, skal tilføjes her
             create = true;
         }
-        pad.move(velocity);
-    
+        velocity = lerp(velocity, velocityGoal, 0.08);
+        if (pad.getX()+velocity < 672-10-pad.getLength() && pad.getX()+velocity > 10) {
+            pad.move(velocity);
+        } else {
+            velocity = 0;
+        }
     }
+        
+    
+    
 
     public void inputHandling(KeyEvent event) {
         switch (event.getCode()) {
             case L:
-                velocity = hSpeed;
+                velocityGoal = hSpeed;
                 break;
                 
             case H:
-                velocity = -hSpeed;
+                velocityGoal = -hSpeed;
                 break;
         }
     }
@@ -51,16 +58,21 @@ public class PrimaryController {
     public void stopHandling(KeyEvent event) {
         switch (event.getCode()) {
             case L:
-                if (velocity > 0) {
-                    velocity = 0;
+                if (velocityGoal > 0) {
+                    velocityGoal = 0;
                 }
                 break;
             
             case H:
-            if (velocity < 0) {
-                velocity = 0;
+            if (velocityGoal < 0) {
+                velocityGoal = 0;
             }
                 break;
         }
     }
+
+    public double lerp(double startValue, double endValue, double interpolationAmount) {
+        return (1 - interpolationAmount) * startValue + interpolationAmount * endValue;
+    }
+
 }

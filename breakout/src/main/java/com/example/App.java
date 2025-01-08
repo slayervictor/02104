@@ -19,8 +19,8 @@ public class App extends Application {
     private static Scene scene;
     Parent root;
     private static Pane rootPane;
-    private double width;
-    private double height;
+    private double width = 672;
+    private double height = 970;
     
 
     @Override
@@ -56,6 +56,14 @@ public class App extends Application {
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWidth() {
+        return width;
     }
 
     public Parent getRoot() {

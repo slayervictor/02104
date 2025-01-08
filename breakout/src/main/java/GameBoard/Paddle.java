@@ -9,8 +9,16 @@ public class Paddle {
         this.paddle = paddle;
     }
 
-    public void move(double distance) {
-        paddle.setLayoutX(paddle.getLayoutX() + distance);
+    public void move(double speed) { // moving and collision with wall
+        paddle.setLayoutX(paddle.getLayoutX() + speed);
+    }
+
+    public double getX() {
+        return paddle.getLayoutX();
+    }
+
+    public double getLength() {
+        return paddle.getWidth();
     }
 
     public Rectangle getObject() {

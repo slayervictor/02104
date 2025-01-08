@@ -1,5 +1,6 @@
 **/*.class
 # Maven
+breakout/target/
 target/
 *.class
 
