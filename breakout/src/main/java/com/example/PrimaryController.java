@@ -1,22 +1,20 @@
 package com.example;
 
-import java.io.IOException;
+import GameBoard.Paddle;
 import javafx.fxml.FXML;
-import javafx.scene.shape.*;
+import javafx.scene.shape.Rectangle;
 
 public class PrimaryController {
-    
     @FXML
-    private Rectangle paddle;
+    private Rectangle paddle; 
 
-    // Called in App
-    public void onStep() {
-        // Hent nuværende x-position
-        paddle.setLayoutX(paddle.getLayoutX()+7);
+    private Paddle pad;
+
+    public void initialize() {
+        pad = new Paddle(paddle); 
     }
 
-    @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+    public void onStep() {
+        pad.movePaddle(7);  
     }
 }

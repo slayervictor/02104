@@ -1,11 +1,13 @@
 package GameBoard;
 
+import java.util.Arrays;
+
 public class Block {
     private double[] pos = {0,0};
     private boolean alive;
 
-    public boolean kill() {
-        return !(alive);
+    public void kill() {
+        alive = false;
     }
 
     public boolean isAlive() {
@@ -19,5 +21,9 @@ public class Block {
 
     public double[] getPos() {
         return pos;
+    }
+
+    public String toString() {
+        return "is alive? " + isAlive() + " " + Arrays.toString(getPos());
     }
 }
