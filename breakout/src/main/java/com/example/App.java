@@ -6,7 +6,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -15,18 +18,20 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    Parent root;
+    private static Pane rootPane;
+    
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary.fxml"));
-        Parent root = fxmlLoader.load();
-        
+        rootPane = (Pane) fxmlLoader.load();  // Initialize rootPane here
         stage.setResizable(false);
         PrimaryController controller = fxmlLoader.getController();
-        scene = new Scene(root, 672, 970);
-    
+        scene = new Scene(rootPane, 672, 970);
+
         scene.setFill(Color.web("#000000")); // Background
-        
+
         startTimeline(controller);
 
         stage.setScene(scene);
@@ -45,6 +50,18 @@ public class App extends Application {
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+    }
+
+    public Parent getRoot() {
+        return root;
+    }
+
+    public static void addElement(Shape shape) {
+        if (rootPane != null) {
+            rootPane.getChildren().add(shape); // Add shape to rootPane
+        } else {
+            System.err.println("Error: Root pane is not initialized!");
+        }
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
