@@ -32,6 +32,9 @@ public class App extends Application {
         scene.setFill(Color.web("#000000")); // Background
         
         startTimeline(controller);
+        scene.setOnKeyReleased(event -> {
+            controller.stopHandling(event);
+        });
         scene.setOnKeyPressed(event -> {
             controller.inputHandling(event);
         });

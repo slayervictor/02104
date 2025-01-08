@@ -19,6 +19,8 @@ public class PrimaryController {
 
     private boolean create = false;
 
+    double velocity = 0;
+
     public void initialize() {
         pad = new Paddle(paddle); 
         
@@ -30,19 +32,34 @@ public class PrimaryController {
             // Alt der skal køres en gang, skal tilføjes her
             create = true;
         }
+        pad.move(velocity);
     
     }
 
     public void inputHandling(KeyEvent event) {
         switch (event.getCode()) {
             case L:
-                pad.move(hSpeed);
-                System.out.println("L was pressed");
+                velocity = hSpeed;
+                break;
+                
+            case H:
+                velocity = -hSpeed;
+                break;
+        }
+    }
+
+    public void stopHandling(KeyEvent event) {
+        switch (event.getCode()) {
+            case L:
+                if (velocity > 0) {
+                    velocity = 0;
+                }
                 break;
             
             case H:
-                pad.move(-hSpeed);
-                System.out.println("H was Pressed");
+            if (velocity < 0) {
+                velocity = 0;
+            }
                 break;
         }
     }
