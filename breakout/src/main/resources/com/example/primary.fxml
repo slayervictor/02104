@@ -15,7 +15,6 @@
       <Rectangle arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="662.0" layoutY="859.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
       <Rectangle arcWidth="5.0" fill="#cccccc" height="79.0" layoutY="891.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
       <Rectangle arcWidth="5.0" fill="#cccccc" height="80.0" layoutX="662.0" layoutY="890.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
-      <Rectangle fx:id="ball" arcWidth="5.0" fill="#9e9e9e" height="10.0" layoutX="351.0" layoutY="843.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="13.0" />
       <Rectangle arcWidth="5.0" fill="#cccccc" height="56.0" layoutX="41.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="12.0" />
       <Rectangle arcWidth="5.0" fill="#cccccc" height="56.0" layoutX="418.0" layoutY="126.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="12.0" />
       <Text fx:id="score" fill="#cccccc" layoutX="53.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="000" textAlignment="CENTER" wrappingWidth="85.98307228088379">
