@@ -13,6 +13,7 @@ public class PrimaryController {
     @FXML
     private Rectangle paddle; 
     private Paddle pad;
+    private Ball ball;
 
     private BlockGrid blocks;
 
@@ -21,12 +22,12 @@ public class PrimaryController {
 
     public void initialize() {
         pad = new Paddle(paddle); 
-        
     }
     
     public void onStep() {
         if (create == false) { // Run once
             blocks = new BlockGrid();
+            ball = new Ball(pad.getX(), pad.getY()-30);
             // Alt der skal køres en gang, skal tilføjes her
             create = true;
         }
@@ -36,11 +37,9 @@ public class PrimaryController {
         } else {
             velocity = 0;
         }
+        ball.nextPos();
     }
         
-    
-    
-
     public void inputHandling(KeyEvent event) {
         switch (event.getCode()) {
             case L:
