@@ -19,6 +19,8 @@ public class App extends Application {
     private static Scene scene;
     Parent root;
     private static Pane rootPane;
+    private double width;
+    private double height;
     
 
     @Override
