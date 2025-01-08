@@ -8,8 +8,16 @@ import javafx.scene.paint.Color;
 public class Ball {
     private double[] velo = new double[]{0,0};    //change inital velocity when program works
     private double[] pos = new double[]{0,0};
-    private double speed = 1;   // change value to increase or decrease ball speed
+    private double speed = 10;   // change value to increase or decrease ball speed
     private Rectangle rect;
+
+    // temp variables move to App.java
+    private double sideWall = 10;
+    private double minWidth = 0 + sideWall;
+    private double maxWidth = 672 - sideWall;
+    private double roof = 92+34;
+    private double minHeight = 0;
+    private double maxHeight = 970 - roof;
     
     public Ball(double x, double y) {
         double dX = (Math.random()*2)-1;  // -1 < rand < 1         
@@ -43,20 +51,26 @@ public class Ball {
         return pos;
     }
 
-    // probably a faster way of doing this
-    public double[] nextPos(double[] pos, double[] velo) {
-        double[] temp = {0,0};
-        for (int i = 0; i <= 1; i++) {
-            temp[i] = pos[i] + velo[i];
-        }
-        return temp;
+    // add the two vectors to eachother and make pos the new pos
+    public void nextPos() {
+        pos = new double[] {pos[0]+velo[0],pos[1]+velo[1]};
     }
 
+    // probably doesn't work
     public void wallBounce(int[] velo) {
         velo[0] *= -1;
     }
 
+    // probably doesn't work
     public void roofBounce(int[] velo) {
         velo[1] *= -1;
+    }
+
+    public boolean collidesWall() {
+        return (minWidth <= getPos()[0] && getPos()[0] <= maxWidth)? false: true; 
+    }
+
+    public boolean collidesRoof() {
+        return (minHeight <= getPos()[1] && getPos()[1] <= maxHeight)? false: true;
     }
 }

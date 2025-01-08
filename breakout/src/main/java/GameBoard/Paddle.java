@@ -17,6 +17,10 @@ public class Paddle {
         return paddle.getLayoutX();
     }
 
+    public double getY() {
+        return paddle.getLayoutY();
+    }
+
     public double getLength() {
         return paddle.getWidth();
     }

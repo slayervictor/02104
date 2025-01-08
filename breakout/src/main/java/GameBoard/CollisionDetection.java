@@ -1,6 +1,7 @@
 package GameBoard;
 
 public class CollisionDetection {
+    /*
     public boolean checkCollision(double ballX, double ballY, double ballRadius, Block block) {
         // Get the block position and dimensions from the Block object
         double blockX = 0; // block.getX();
@@ -35,5 +36,9 @@ public class CollisionDetection {
         // No collision
         // return ; (When it's not gameover)
         return "";
+    } */
+
+    public boolean checkCollision(Ball ball) {
+        ball.getPos()
     }
 }
