@@ -1,12 +1,12 @@
 package GameBoard;
-/* 
+
 public class CollisionDetection {
     public boolean checkCollision(double ballX, double ballY, double ballRadius, Block block) {
         // Get the block position and dimensions from the Block object
-        double blockX = block.x; // block.getX();
-        double blockY = block.y; // block.getY();
-        double blockWidth = block.width; // block.getWidth();
-        double blockHeight = block.height; // block.getHeight();
+        double blockX = 0; // block.getX();
+        double blockY = 0; // block.getY();
+        double blockWidth = 0; // block.getWidth();
+        double blockHeight = 0; // block.getHeight();
 
         // Nearest point from ball center to wall of blocks 
         double nearestX = Math.max(blockX, Math.min(ballX, blockX + blockWidth));
@@ -36,4 +36,4 @@ public class CollisionDetection {
         // return ; (When it's not gameover)
         return "";
     }
-}*/
+}
