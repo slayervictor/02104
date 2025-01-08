@@ -1,8 +1,8 @@
 package com.example;
+
 import GameBoard.*;
 import javafx.fxml.FXML;
 import javafx.scene.input.*;
-
 import javafx.scene.shape.Rectangle;
 import javafx.scene.input.KeyEvent;
 import java.util.Random;
@@ -12,13 +12,11 @@ public class PrimaryController {
     private double hSpeed = 7;
     @FXML
     private Rectangle paddle; 
-
     private Paddle pad;
 
     private BlockGrid blocks;
 
     private boolean create = false;
-
     double velocity, velocityGoal;
 
     public void initialize() {
@@ -32,7 +30,7 @@ public class PrimaryController {
             // Alt der skal køres en gang, skal tilføjes her
             create = true;
         }
-        velocity = lerp(velocity, velocityGoal, 0.08);
+        velocity = lerp(velocity, velocityGoal, 0.5);
         if (pad.getX()+velocity < 672-10-pad.getLength() && pad.getX()+velocity > 10) {
             pad.move(velocity);
         } else {
