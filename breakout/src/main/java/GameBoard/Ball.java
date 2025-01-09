@@ -57,11 +57,6 @@ public class Ball {
         pos[0] = x;
         pos[1] = y;
     }
-    /*
-    public void move(double speed) { // moving and collision with wall
-        paddle.setLayoutX(paddle.getLayoutX() + speed);
-    }
-    */
 
     public double[] getPos() {
         return pos;
@@ -87,12 +82,10 @@ public class Ball {
         
     
 
-    // probably doesn't work
     public void wallBounce() {
         velo[0] *= -1;
     }
 
-    // probably doesn't work
     public void roofBounce() {
         velo[1] *= -1;
     }
