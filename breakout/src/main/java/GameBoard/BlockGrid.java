@@ -10,36 +10,36 @@ public class BlockGrid {
 
     public BlockGrid() {
         Scanner console = new Scanner(System.in);
-        System.out.print("Please choose a height for the block field: ");
-        int input = console.nextInt();
-        
-        if ((1 <= input) && (input <= 10)) {
-            n = input; 
-        } else {
-            console.close();
-            throw new IllegalArgumentException("n is out of bounds, please let n = {1,...,10}");
-        }
-        System.out.print("Please choose a width for the block field: ");
-        input = console.nextInt();
-
-        if ((5 <= input) && (input <= 20)) {
-            m = input;
-            console.close();
-        } else {
-            console.close();
-            throw new IllegalArgumentException("m is out of bounds, please let m = {5,...,20}");
-        }
+        System.out.print("Please choose a height for the block field (1-10): ");
+        n = takeInput(console, 1, 10);
+        System.out.print("Please choose a width for the block field (5-20): ");
+        m = takeInput(console, 5, 20);
+        console.close();
         createField();
     }
 
+    int takeInput(Scanner console, int lower, int higher) {
+        int temp = console.nextInt();
+        if (temp <= higher && temp >= lower) {
+            return temp;
+        } else {
+            System.out.print("Please enter a value within the bounds: {" + lower + ",...," + higher + "} ");
+            return takeInput(console, lower, higher);
+        }
+    }
+
     private void createField() {
-        double blockWidth = 15;
-        double blockHeight = 15;
-        double offset = 0;
-        for (int i = 0 ; i < m ; i++) {
-            for (int j = 0 ; j < n ; j++) {
-                blockGrid.add(new Block(11+blockWidth/2+(offset+blockHeight)*i, 90+blockHeight/2+(offset+blockHeight)*j, blockWidth, blockHeight, Color.WHITE));
-                
+        double margin = 10;
+        double offset = 5; 
+
+        double blockWidth = (672 - 2 * margin - offset * (m + 1)) / m;
+        double blockHeight = ((970 / 4) - offset * (n + 1)) / n;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                double x = margin + offset * (i + 1) + blockWidth * i;
+                double y = 970 / 4 + offset * (j + 1) + blockHeight * j;
+                blockGrid.add(new Block(x, y, blockWidth, blockHeight, Color.WHITE));
             }
         }
     }

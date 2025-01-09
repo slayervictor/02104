@@ -31,7 +31,7 @@ public class PrimaryController {
             // Alt der skal køres en gang, skal tilføjes her
             create = true;
         }
-        velocity = lerp(velocity, velocityGoal, 0.5);
+        velocity = lerp(velocity, velocityGoal, 0.25);
         if (pad.getX()+velocity < 672-10-pad.getLength() && pad.getX()+velocity > 10) {
             pad.move(velocity);
         } else {
