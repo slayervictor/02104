@@ -37,7 +37,15 @@ public class PrimaryController {
         } else {
             velocity = 0;
         }
+
+        if (ball.collidesWall()) {
+            ball.wallBounce();
+        } else if (ball.collidesRoof()) {
+            ball.roofBounce();
+        }
+
         ball.nextPos();
+        System.exit(0);     // for debugging
     }
         
     public void inputHandling(KeyEvent event) {
