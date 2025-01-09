@@ -27,7 +27,7 @@ public class PrimaryController {
     public void onStep() {
         if (create == false) { // Run once
             blocks = new BlockGrid();
-            ball = new Ball(pad.getX()+pad.getLength()/2-13/2, pad.getY()-30);
+            ball = new Ball(pad.getX()+pad.getLength()/2-13/2, pad.getY()-30,pad,blocks);
             // Alt der skal køres en gang, skal tilføjes her
             create = true;
         }

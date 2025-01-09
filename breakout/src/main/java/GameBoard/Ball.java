@@ -11,6 +11,8 @@ public class Ball {
     private double speed = 5;   // change value to increase or decrease ball speed
     private Rectangle rect;
     private boolean moving = false;
+    private Paddle pad;
+    private BlockGrid blockGrid;
 
     // temp variables move to App.java
     private double sideWall = 10;
@@ -20,7 +22,9 @@ public class Ball {
     private double minHeight = 0;
     private double maxHeight = 970 - roof;
     
-    public Ball(double x, double y) {
+    public Ball(double x, double y, Paddle pad, BlockGrid blockgrid) {
+        this.pad = pad;
+        this.blockGrid = blockgrid;
         double dX = speed*.5*((Math.random()*2-1) > 0 ? 1 : -1);  // -1 < rand < 1
         double dY = -speed*.5;      // Ensures hypotenuse is always speed for any x
         System.out.println(-Math.sqrt(speed-Math.pow(dX, 2)));
@@ -29,7 +33,6 @@ public class Ball {
         setPos(x,y);
         rect.setFill(Color.rgb(158, 158, 158));
         App.addElement(rect);
-        
     }
 
     public void setMoving(boolean input) {
