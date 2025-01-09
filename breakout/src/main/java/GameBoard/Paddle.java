@@ -25,6 +25,10 @@ public class Paddle {
         return paddle.getWidth();
     }
 
+    public double getHeight() {
+        return paddle.getHeight();
+    }
+
     public Rectangle getObject() {
         return paddle;
     }

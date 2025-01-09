@@ -72,14 +72,10 @@ public class Ball {
         //System.out.println("x: " + rect.getLayoutX() + " | y: " + rect.getLayoutY());
         if (moving) {
         pos = new double[] {pos[0]+velo[0],pos[1]+velo[1]};
-        if (collidesWall() || collidesBlockHorizontal()) {
+        if (collidesWall() || collidesBlockHorizontal() || collidesSidePadddle()) {
             wallBounce();
-        } else if (collidesRoof() || collidesBlockVertical()) {
+        } else if (collidesRoof() || collidesBlockVertical() || collidesTopPaddle()) {
             roofBounce();
-        } else if (collidesTopPaddle()) {
-            roofBounce();
-        } else if (collidesSidePadddle()) {
-            wallBounce();
         }
         rect.setLayoutX(pos[0]);
         rect.setLayoutY(pos[1]);
@@ -134,12 +130,20 @@ public class Ball {
     }
     
     public boolean collidesTopPaddle() {
-        return (pad.getY() >= getPos()[1]+getVelo()[1])? true: false;
+        boolean ycollides = pad.getY()+pad.getHeight() >= getPos()[1]+velo[1] && pad.getY() <= getPos()[1]+velo[1];
+        if (pad.getX() <= pos[0] && ycollides && pad.getX()+pad.getLength() >= pos[0]) {
+            return true;
+        }
+        return false;
     }
     // pad.getX - pad.width <= ball.pos <= pad.getx + pad.width 
 
     public boolean collidesSidePadddle() {
-        return (pad.getX() == getPos()[1]+pad.getLength()/2)? true: false;
+        boolean ycollides = pad.getX()+pad.getHeight() >= getPos()[1] && pad.getY() <= getPos()[1];
+        if (pad.getX() <= pos[0]+velo[0] && ycollides && pad.getY()+pad.getLength() >= pos[0]+velo[0]) {
+            return true;
+        }
+        return false;
     }
     /*
     public void handleReflection(boolean hitVerticalWall, boolean hitHorizontalWall) {

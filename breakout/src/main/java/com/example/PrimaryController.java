@@ -97,7 +97,7 @@ public class PrimaryController {
         return (1 - interpolationAmount) * startValue + interpolationAmount * endValue;
     }
 
-    public boolean looseCondition() {
+    public boolean loseCondition() {
         return (ball.getPos()[1] >= 972)? true: false;
     }
 }
