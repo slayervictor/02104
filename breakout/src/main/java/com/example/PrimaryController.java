@@ -40,7 +40,7 @@ public class PrimaryController {
 
         ball.nextPos();
         if (ball.isMoving() == false) {
-            ball.setPos( pad.getX()+pad.getLength()/2-13/2,ball.getPos()[1]);
+            ball.setPos( pad.getX()+pad.getLength()/2-13/2+velocity,ball.getPos()[1]);
         }
         // System.exit(0);     // for debugging
     }
