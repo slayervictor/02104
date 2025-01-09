@@ -119,7 +119,13 @@ public class Ball {
     public boolean collidesBlockVertical() {
         return (minHeight <= getPos()[1] && getPos()[1] <= maxHeight)? false: true;
     }
+    public boolean colldiesTopPaddle() {
+        return (pad.getY() >= getPos()[1]+getVelo()[1])? true: false;
+    }
 
+    public boolean collidesSidePadddle() {
+        return (pad.getX() == getPos()[1]+pad.getLength()/2)? true: false;
+    }
     public void handleReflection(boolean hitVerticalWall, boolean hitHorizontalWall) {
         if (hitVerticalWall) {
             velo[0] = -velo[0]; 
