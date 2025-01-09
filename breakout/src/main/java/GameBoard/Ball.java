@@ -6,9 +6,9 @@ import javafx.scene.paint.Color;
 
 // Change int to double
 public class Ball {
-    private double[] velo = new double[]{0,0};    //change inital velocity when program works
-    private double[] pos = new double[]{0,0};
-    private double speed = 1.0/100;   // change value to increase or decrease ball speed
+    private double[] velo = new double[2];    //change inital velocity when program works
+    private double[] pos = new double[2];
+    private double speed = 5;   // change value to increase or decrease ball speed
     private Rectangle rect;
 
     // temp variables move to App.java
@@ -20,13 +20,15 @@ public class Ball {
     private double maxHeight = 970 - roof;
     
     public Ball(double x, double y) {
-        double dX = (Math.random()*2)-1;  // -1 < rand < 1         
-        double dY = -Math.sqrt(speed-Math.pow(dX, 2));      // Ensures hypotenuse is always speed for any x
-        setPos(x, y);
+        double dX = speed*.5*((Math.random()*2-1) > 0 ? 1 : -1);  // -1 < rand < 1
+        double dY = speed*.5;      // Ensures hypotenuse is always speed for any x
+        System.out.println(-Math.sqrt(speed-Math.pow(dX, 2)));
         setVelo(dX, dY);
-        rect = new Rectangle(x,y,13,10);
+        rect = new Rectangle(0,0,13,10);
+        setPos(x,y);
         rect.setFill(Color.rgb(158, 158, 158));
         App.addElement(rect);
+        
     }
 
     public double getSpeed() {
@@ -57,10 +59,16 @@ public class Ball {
     }
 
     public void nextPos() {
-        System.out.println("x: " + pos[0] + "y: " + pos[1]);
+        //System.out.println("x: " + rect.getLayoutX() + " | y: " + rect.getLayoutY());
         pos = new double[] {pos[0]+velo[0],pos[1]+velo[1]};
-        rect.setLayoutX(getPos()[0]);
-        rect.setLayoutY(getPos()[1]);
+        if (collidesWall()) {
+            wallBounce();
+        } else if (collidesRoof()) {
+            roofBounce();
+        }
+        rect.setLayoutX(pos[0]);
+        rect.setLayoutY(pos[1]);
+
     }
 
     // probably doesn't work
