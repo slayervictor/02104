@@ -89,5 +89,9 @@ public class BlockGrid {
     public int getBlockGridWidth() {
         return m;
     }
+
+    public HashSet<Block> getBlockGrid() {
+        return blockGrid;
+    }
     
 }

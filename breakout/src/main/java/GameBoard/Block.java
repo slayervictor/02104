@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 public class Block {
     private double[] pos;
     private double[] scale; 
-    private boolean alive;
+    private boolean alive = true;
     private Rectangle rect;
 
 
@@ -28,11 +28,12 @@ public class Block {
     
 
     public void kill() {
+        rect.setWidth(0);
         alive = false;
     }
 
     public boolean isAlive() {
-        return (alive)? alive: false;
+        return alive;
     }
 
     public void setPos(double x, double y) {

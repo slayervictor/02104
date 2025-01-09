@@ -3,6 +3,7 @@ package GameBoard;
 import com.example.App;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
+import java.util.*;
 
 // Change int to double
 public class Ball {
@@ -13,6 +14,7 @@ public class Ball {
     private boolean moving = false;
     private Paddle pad;
     private BlockGrid blockGrid;
+    private HashSet<Block> blocks;
 
     // temp variables move to App.java
     private double sideWall = 10;
@@ -25,6 +27,7 @@ public class Ball {
     public Ball(double x, double y, Paddle pad, BlockGrid blockgrid) {
         this.pad = pad;
         this.blockGrid = blockgrid;
+        blocks = blockgrid.getBlockGrid();
         double dX = speed*.5*((Math.random()*2-1) > 0 ? 1 : -1);  // -1 < rand < 1
         double dY = -speed*.5;      // Ensures hypotenuse is always speed for any x
         System.out.println(-Math.sqrt(speed-Math.pow(dX, 2)));
@@ -69,7 +72,7 @@ public class Ball {
         //System.out.println("x: " + rect.getLayoutX() + " | y: " + rect.getLayoutY());
         if (moving) {
         pos = new double[] {pos[0]+velo[0],pos[1]+velo[1]};
-        if (collidesWall()) {
+        if (collidesWall() || collidesBlockHorizontal()) {
             wallBounce();
         } else if (collidesRoof()) {
             roofBounce();
@@ -81,9 +84,6 @@ public class Ball {
             rect.setLayoutY(pos[1]);
         }
     }
-        
-        
-    
 
     public void wallBounce() {
         velo[0] *= -1;
@@ -98,6 +98,25 @@ public class Ball {
     }
 
     public boolean collidesRoof() {
+        return (minHeight <= getPos()[1] && getPos()[1] <= maxHeight)? false: true;
+    }
+
+    public boolean collidesBlockHorizontal() {
+        for (Block b : blocks) {
+            if (b.isAlive()) {
+                if (b.getPos()[0] <= pos[0]+velo[0] && (b.getPos()[1]+b.getRect().getHeight() >= getPos()[1]+velo[1] && b.getPos()[1] <= getPos()[1]+velo[1])) {
+                    b.kill();
+                    return true;
+                } else if (b.getPos()[0]+b.getRect().getWidth() <= pos[0]+velo[0] && (b.getPos()[1]+b.getRect().getHeight() >= getPos()[1]+velo[1] && b.getPos()[1] <= getPos()[1]+velo[1])) {
+                    b.kill();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean collidesBlockVertical() {
         return (minHeight <= getPos()[1] && getPos()[1] <= maxHeight)? false: true;
     }
 

@@ -78,6 +78,14 @@ public class App extends Application {
         }
     }
 
+    public static void removeElement(Shape shape) {
+        if (rootPane != null) {
+            rootPane.getChildren().remove(rootPane.getChildren().size()); // Add shape to rootPane
+        } else {
+            System.err.println("Error: Root pane is not initialized!");
+        }
+    }
+
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
