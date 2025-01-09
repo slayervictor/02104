@@ -9,7 +9,7 @@ import java.util.Random;
 
 
 public class PrimaryController {
-    private double hSpeed = 7;
+    private double hSpeed = 5;
     @FXML
     private Rectangle paddle; 
     private Paddle pad;

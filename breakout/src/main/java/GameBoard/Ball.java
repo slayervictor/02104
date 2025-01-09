@@ -9,7 +9,7 @@ import java.util.*;
 public class Ball {
     private double[] velo = new double[2];    //change inital velocity when program works
     private double[] pos = new double[2];
-    private double speed = 5;   // change value to increase or decrease ball speed
+    private double speed = 3;   // change value to increase or decrease ball speed
     private Rectangle rect;
     private boolean moving = false;
     private Paddle pad;
@@ -94,7 +94,7 @@ public class Ball {
     }
 
     public boolean collidesWall() {
-        return (minWidth <= getPos()[0] && getPos()[0] <= maxWidth)? false: true; 
+        return (minWidth <= getPos()[0] && getPos()[0]+rect.getWidth() <= maxWidth)? false: true; 
     }
 
     public boolean collidesRoof() {
