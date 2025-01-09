@@ -53,6 +53,7 @@ public class Ball {
 
     // add the two vectors to eachother and make pos the new pos
     public void nextPos() {
+        System.out.println("x: " + pos[0] + "y: " + pos[1]);
         pos = new double[] {pos[0]+velo[0],pos[1]+velo[1]};
     }
 
