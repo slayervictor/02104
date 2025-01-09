@@ -72,12 +72,12 @@ public class Ball {
     }
 
     // probably doesn't work
-    public void wallBounce() {
+    public void wallBounce(int[] velo) {
         velo[0] *= -1;
     }
 
     // probably doesn't work
-    public void roofBounce() {
+    public void roofBounce(int[] velo) {
         velo[1] *= -1;
     }
 
@@ -87,5 +87,24 @@ public class Ball {
 
     public boolean collidesRoof() {
         return (minHeight <= getPos()[1] && getPos()[1] <= maxHeight)? false: true;
+    }
+
+    public void handleReflection(boolean hitVerticalWall, boolean hitHorizontalWall) {
+        if (hitVerticalWall) {
+            velo[0] = -velo[0]; 
+        }
+        if (hitHorizontalWall) {
+            velo[1] = -velo[1]; 
+        }
+    }
+
+    public void updatePosition() {
+        nextPos(); 
+        if (collidesWall()) {
+            handleReflection(true, false);
+        }
+        if (collidesRoof()) {
+            handleReflection(false, true); 
+        }
     }
 }

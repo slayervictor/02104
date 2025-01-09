@@ -39,7 +39,7 @@ public class PrimaryController {
         }
 
         ball.nextPos();
-        //System.exit(0);     // for debugging purposes
+        // System.exit(0);     // for debugging
     }
         
     public void inputHandling(KeyEvent event) {
