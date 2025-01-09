@@ -34,12 +34,50 @@ public class BlockGrid {
 
         double blockWidth = (672 - 2 * margin - offset * (m + 1)) / m;
         double blockHeight = ((970 / 4) - offset * (n + 1)) / n;
+        Color col;
+        for (int i = 0; i < n; i++) {
+                switch ((i/2)%8) {
+                    case 0:
+                        col = Color.rgb(231,100,154);
+                        break;
+                    
+                    case 1:
+                        col = Color.rgb(252,79,81);
+                        break;
+                    
+                    case 2:
+                        col = Color.rgb(248,123,65);
+                        break;
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                double x = margin + offset * (i + 1) + blockWidth * i;
-                double y = 970 / 4 + offset * (j + 1) + blockHeight * j;
-                blockGrid.add(new Block(x, y, blockWidth, blockHeight, Color.WHITE));
+                    case 3:
+                        col = Color.rgb(243,211,42);
+                        break;
+
+                    case 4:
+                        col = Color.rgb(82,189,85);
+                        break;
+
+                    case 5:
+                        col = Color.rgb(69,69,229);
+                        break;
+
+                    case 6:
+                        col = Color.rgb(140,77,243);
+                        break;
+
+                    case 7:
+                        col = Color.rgb(44,240,239);
+                        break;
+                
+                    default:
+                        col = Color.WHITE;
+                        break;
+                }
+            for (int j = 0; j < m; j++) {
+                double x = margin + offset * (j + 1) + blockWidth * j;
+                double y = 970 / 4 + offset * (i + 1) + blockHeight * i;
+                
+                blockGrid.add(new Block(x, y, blockWidth, blockHeight, col));
             }
         }
     }
