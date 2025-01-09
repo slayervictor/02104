@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 public class Ball {
     private double[] velo = new double[]{0,0};    //change inital velocity when program works
     private double[] pos = new double[]{0,0};
-    private double speed = 10;   // change value to increase or decrease ball speed
+    private double speed = 1.0/100;   // change value to increase or decrease ball speed
     private Rectangle rect;
 
     // temp variables move to App.java
@@ -21,7 +21,7 @@ public class Ball {
     
     public Ball(double x, double y) {
         double dX = (Math.random()*2)-1;  // -1 < rand < 1         
-        double dY = Math.sqrt(1-Math.pow(dX, 2));      // Ensures hypotenuse is always 1 for any x
+        double dY = -Math.sqrt(speed-Math.pow(dX, 2));      // Ensures hypotenuse is always speed for any x
         setPos(x, y);
         setVelo(dX, dY);
         rect = new Rectangle(x,y,13,10);
@@ -46,23 +46,30 @@ public class Ball {
         pos[0] = x;
         pos[1] = y;
     }
+    /*
+    public void move(double speed) { // moving and collision with wall
+        paddle.setLayoutX(paddle.getLayoutX() + speed);
+    }
+    */
 
     public double[] getPos() {
         return pos;
     }
 
-    // add the two vectors to eachother and make pos the new pos
     public void nextPos() {
+        System.out.println("x: " + pos[0] + "y: " + pos[1]);
         pos = new double[] {pos[0]+velo[0],pos[1]+velo[1]};
+        rect.setLayoutX(getPos()[0]);
+        rect.setLayoutY(getPos()[1]);
     }
 
     // probably doesn't work
-    public void wallBounce(int[] velo) {
+    public void wallBounce() {
         velo[0] *= -1;
     }
 
     // probably doesn't work
-    public void roofBounce(int[] velo) {
+    public void roofBounce() {
         velo[1] *= -1;
     }
 
