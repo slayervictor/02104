@@ -76,6 +76,10 @@ public class Ball {
             wallBounce();
         } else if (collidesRoof() || collidesBlockVertical()) {
             roofBounce();
+        } else if (collidesTopPaddle()) {
+            roofBounce();
+        } else if (collidesSidePadddle()) {
+            wallBounce();
         }
         rect.setLayoutX(pos[0]);
         rect.setLayoutY(pos[1]);
@@ -98,7 +102,7 @@ public class Ball {
     }
 
     public boolean collidesRoof() {
-        return (minHeight <= getPos()[1] && getPos()[1] <= maxHeight)? false: true;
+        return (minHeight <= getPos()[1] /*&& getPos()[1] <= maxHeight*/)? false: true;
     }
 
     public boolean collidesBlockHorizontal() {
@@ -129,13 +133,15 @@ public class Ball {
         return false;
     }
     
-    public boolean colldiesTopPaddle() {
+    public boolean collidesTopPaddle() {
         return (pad.getY() >= getPos()[1]+getVelo()[1])? true: false;
     }
+    // pad.getX - pad.width <= ball.pos <= pad.getx + pad.width 
 
     public boolean collidesSidePadddle() {
         return (pad.getX() == getPos()[1]+pad.getLength()/2)? true: false;
     }
+    /*
     public void handleReflection(boolean hitVerticalWall, boolean hitHorizontalWall) {
         if (hitVerticalWall) {
             velo[0] = -velo[0]; 
@@ -154,4 +160,5 @@ public class Ball {
             handleReflection(false, true); 
         }
     }
+    */
 }
