@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 public class Ball {
     private double[] velo = new double[]{0,0};    //change inital velocity when program works
     private double[] pos = new double[]{0,0};
-    private double speed = 1.0/100;   // change value to increase or decrease ball speed
+    private double speed = 1;   // change value to increase or decrease ball speed
     private Rectangle rect;
 
     // temp variables move to App.java
@@ -64,12 +64,12 @@ public class Ball {
     }
 
     // probably doesn't work
-    public void wallBounce() {
+    public void wallBounce(int[] velo) {
         velo[0] *= -1;
     }
 
     // probably doesn't work
-    public void roofBounce() {
+    public void roofBounce(int[] velo) {
         velo[1] *= -1;
     }
 
@@ -79,5 +79,24 @@ public class Ball {
 
     public boolean collidesRoof() {
         return (minHeight <= getPos()[1] && getPos()[1] <= maxHeight)? false: true;
+    }
+
+    public void handleReflection(boolean hitVerticalWall, boolean hitHorizontalWall) {
+        if (hitVerticalWall) {
+            velo[0] = -velo[0]; 
+        }
+        if (hitHorizontalWall) {
+            velo[1] = -velo[1]; 
+        }
+    }
+
+    public void updatePosition() {
+        nextPos(); 
+        if (collidesWall()) {
+            handleReflection(true, false);
+        }
+        if (collidesRoof()) {
+            handleReflection(false, true); 
+        }
     }
 }
