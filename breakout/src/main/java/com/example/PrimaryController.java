@@ -42,9 +42,25 @@ public class PrimaryController {
         if (ball.isMoving() == false) {
             ball.setPos( pad.getX()+pad.getLength()/2-13/2+velocity,ball.getPos()[1]);
         }
+        if (winCondition()) {
+            System.out.println("YOU WON");
+            System.exit(0);
+        } 
+        if (loseCondition()) {
+            System.out.println("YOU LOST");
+            System.exit(0);
+        }
+
         // System.exit(0);     // for debugging
     }
-        
+
+    public boolean winCondition() {
+        if (blocks.getBlockGrid().size() == 0) {
+            return true;
+        }
+        return false;
+    }
+
     public void inputHandling(KeyEvent event) {
         switch (event.getCode()) {
             case L:

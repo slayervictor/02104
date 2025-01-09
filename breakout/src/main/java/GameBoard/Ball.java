@@ -74,7 +74,7 @@ public class Ball {
         pos = new double[] {pos[0]+velo[0],pos[1]+velo[1]};
         if (collidesWall() || collidesBlockHorizontal()) {
             wallBounce();
-        } else if (collidesRoof()) {
+        } else if (collidesRoof() || collidesBlockVertical()) {
             roofBounce();
         }
         rect.setLayoutX(pos[0]);
@@ -104,10 +104,9 @@ public class Ball {
     public boolean collidesBlockHorizontal() {
         for (Block b : blocks) {
             if (b.isAlive()) {
-                if (b.getPos()[0] <= pos[0]+velo[0] && (b.getPos()[1]+b.getRect().getHeight() >= getPos()[1]+velo[1] && b.getPos()[1] <= getPos()[1]+velo[1])) {
-                    b.kill();
-                    return true;
-                } else if (b.getPos()[0]+b.getRect().getWidth() <= pos[0]+velo[0] && (b.getPos()[1]+b.getRect().getHeight() >= getPos()[1]+velo[1] && b.getPos()[1] <= getPos()[1]+velo[1])) {
+                boolean ycollides = b.getPos()[1]+b.getRect().getHeight() >= getPos()[1] && b.getPos()[1] <= getPos()[1];
+                if (b.getPos()[0] <= pos[0]+velo[0] && ycollides && b.getPos()[0]+b.getRect().getWidth() >= pos[0]+velo[0]) {
+                    blocks.remove(b);
                     b.kill();
                     return true;
                 }
@@ -117,8 +116,19 @@ public class Ball {
     }
 
     public boolean collidesBlockVertical() {
-        return (minHeight <= getPos()[1] && getPos()[1] <= maxHeight)? false: true;
+        for (Block b : blocks) {
+            if (b.isAlive()) {
+                boolean ycollides = b.getPos()[1]+b.getRect().getHeight() >= getPos()[1]+velo[1] && b.getPos()[1] <= getPos()[1]+velo[1];
+                if (b.getPos()[0] <= pos[0] && ycollides && b.getPos()[0]+b.getRect().getWidth() >= pos[0]) {
+                    blocks.remove(b);
+                    b.kill();
+                    return true;
+                }
+            }
+        }
+        return false;
     }
+    
     public boolean colldiesTopPaddle() {
         return (pad.getY() >= getPos()[1]+getVelo()[1])? true: false;
     }
