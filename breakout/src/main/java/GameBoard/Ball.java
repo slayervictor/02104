@@ -72,7 +72,7 @@ public class Ball {
         //System.out.println("x: " + rect.getLayoutX() + " | y: " + rect.getLayoutY());
         if (moving) {
         pos = new double[] {pos[0]+velo[0],pos[1]+velo[1]};
-        if (collidesWall() || collidesBlockHorizontal() || collidesSidePadddle()) {
+        if (collidesWall() || collidesBlockHorizontal() || collidesSidePaddle()) {
             wallBounce();
         } else if (collidesRoof() || collidesBlockVertical() || collidesTopPaddle()) {
             roofBounce();
@@ -102,49 +102,68 @@ public class Ball {
     }
 
     public boolean collidesBlockHorizontal() {
+        List<Block> toRemove = new ArrayList<>();
+        boolean collisionDetected = false;
+    
         for (Block b : blocks) {
             if (b.isAlive()) {
-                boolean ycollides = b.getPos()[1]+b.getRect().getHeight() >= getPos()[1] && b.getPos()[1] <= getPos()[1];
-                if (b.getPos()[0] <= pos[0]+velo[0] && ycollides && b.getPos()[0]+b.getRect().getWidth() >= pos[0]+velo[0]) {
-                    blocks.remove(b);
+                boolean yCollides = b.getPos()[1] + b.getRect().getHeight() >= pos[1] &&
+                                    b.getPos()[1] <= pos[1];
+                boolean xCollides = b.getPos()[0] <= pos[0] + velo[0] &&
+                                    b.getPos()[0] + b.getRect().getWidth() >= pos[0] + velo[0];
+    
+                if (xCollides && yCollides) {
+                    toRemove.add(b);
                     b.kill();
-                    return true;
+                    collisionDetected = true;
                 }
             }
         }
-        return false;
-    }
-
-    public boolean collidesBlockVertical() {
-        for (Block b : blocks) {
-            if (b.isAlive()) {
-                boolean ycollides = b.getPos()[1]+b.getRect().getHeight() >= getPos()[1]+velo[1] && b.getPos()[1] <= getPos()[1]+velo[1];
-                if (b.getPos()[0] <= pos[0] && ycollides && b.getPos()[0]+b.getRect().getWidth() >= pos[0]) {
-                    blocks.remove(b);
-                    b.kill();
-                    return true;
-                }
-            }
-        }
-        return false;
+    
+        blocks.removeAll(toRemove);
+        return collisionDetected;
     }
     
+    public boolean collidesBlockVertical() {
+        List<Block> toRemove = new ArrayList<>();
+        boolean collisionDetected = false;
+    
+        for (Block b : blocks) {
+            if (b.isAlive()) {
+                boolean yCollides = b.getPos()[1] + b.getRect().getHeight() >= pos[1] + velo[1] &&
+                                    b.getPos()[1] <= pos[1] + velo[1];
+                boolean xCollides = b.getPos()[0] <= pos[0] &&
+                                    b.getPos()[0] + b.getRect().getWidth() >= pos[0];
+    
+                if (xCollides && yCollides) {
+                    toRemove.add(b);
+                    b.kill();
+                    collisionDetected = true;
+                }
+            }
+        }
+    
+        blocks.removeAll(toRemove);
+        return collisionDetected;
+    }
+    
+    
     public boolean collidesTopPaddle() {
-        boolean ycollides = pad.getY()+pad.getHeight() >= getPos()[1]+velo[1] && pad.getY() <= getPos()[1]+velo[1];
-        if (pad.getX() <= pos[0] && ycollides && pad.getX()+pad.getLength() >= pos[0]) {
-            return true;
-        }
-        return false;
+        boolean withinPaddleX = pad.getX() <= pos[0] && pos[0] <= pad.getX() + pad.getLength();
+        boolean yCollides = pad.getY() <= pos[1] + velo[1] &&
+                            pad.getY() + pad.getHeight() >= pos[1] + velo[1] + rect.getHeight();
+    
+        return withinPaddleX && yCollides;
     }
-    // pad.getX - pad.width <= ball.pos <= pad.getx + pad.width 
-
-    public boolean collidesSidePadddle() {
-        boolean ycollides = pad.getX()+pad.getHeight() >= getPos()[1] && pad.getY() <= getPos()[1];
-        if (pad.getX() <= pos[0]+velo[0] && ycollides && pad.getY()+pad.getLength() >= pos[0]+velo[0]) {
-            return true;
-        }
-        return false;
+    
+    public boolean collidesSidePaddle() {
+        boolean withinPaddleY = pad.getY() <= pos[1] && pos[1] <= pad.getY() + pad.getHeight();
+        boolean xCollides = pad.getX() <= pos[0] + velo[0] &&
+                            pad.getX() + pad.getLength() >= pos[0] + velo[0];
+    
+        return withinPaddleY && xCollides;
     }
+    
     /*
     public void handleReflection(boolean hitVerticalWall, boolean hitHorizontalWall) {
         if (hitVerticalWall) {
