@@ -59,6 +59,14 @@ public class Ball {
         return velo;
     }
 
+    public double getXVelo() {
+        return velo[0];
+    }
+
+    public double getYVelo() {
+        return velo[1];
+    }
+
     public void setPos(double x, double y) {
         pos[0] = x;
         pos[1] = y;
@@ -66,6 +74,14 @@ public class Ball {
 
     public double[] getPos() {
         return pos;
+    }
+
+    public double getXPos() {
+        return pos[0];
+    }
+    
+    public double getYPos() {
+        return pos[1];
     }
 
     public void nextPos() {
@@ -94,13 +110,14 @@ public class Ball {
     }
 
     public boolean collidesWall() {
-        return (minWidth <= getPos()[0] && getPos()[0]+rect.getWidth() <= maxWidth)? false: true; 
+        return (minWidth <= getXPos() && getXPos()+rect.getWidth() <= maxWidth)? false: true; 
     }
 
     public boolean collidesRoof() {
-        return (minHeight <= getPos()[1] /*&& getPos()[1] <= maxHeight*/)? false: true;
+        return (minHeight <= getYPos() /*&& getYPos() <= maxHeight*/)? false: true;
     }
 
+    // Needs to be checked thorugh for getX/YPos
     public boolean collidesBlockHorizontal() {
         List<Block> toRemove = new ArrayList<>();
         boolean collisionDetected = false;
@@ -149,17 +166,17 @@ public class Ball {
     
     
     public boolean collidesTopPaddle() {
-        boolean withinPaddleX = pad.getX() <= pos[0] && pos[0] <= pad.getX() + pad.getLength();
-        boolean yCollides = pad.getY() <= pos[1] + velo[1] &&
-                            pad.getY() + pad.getHeight() >= pos[1] + velo[1] + rect.getHeight();
+        boolean withinPaddleX = pad.getX() <= getXPos() && getXPos() <= pad.getX() + pad.getLength();
+        boolean yCollides = pad.getY() <= getYPos() + velo[1] &&
+                            pad.getY() + pad.getHeight() >= getYPos() + velo[1] + rect.getHeight();
     
         return withinPaddleX && yCollides;
     }
     
     public boolean collidesSidePaddle() {
-        boolean withinPaddleY = pad.getY() <= pos[1] && pos[1] <= pad.getY() + pad.getHeight();
-        boolean xCollides = pad.getX() <= pos[0] + velo[0] &&
-                            pad.getX() + pad.getLength() >= pos[0] + velo[0];
+        boolean withinPaddleY = pad.getY() <= getYPos() && getYPos() <= pad.getY() + pad.getHeight();
+        boolean xCollides = pad.getX() <= getXPos() + velo[0] &&
+                            pad.getX() + pad.getLength() >= getXPos() + velo[0];
     
         return withinPaddleY && xCollides;
     }
