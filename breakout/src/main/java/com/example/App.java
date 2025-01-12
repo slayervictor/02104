@@ -30,7 +30,6 @@ public class App extends Application {
         stage.setResizable(false);
         PrimaryController controller = fxmlLoader.getController();
         scene = new Scene(rootPane, width, height);
-
         scene.setFill(Color.web("#000000")); // Background
         
         // Handle events 
