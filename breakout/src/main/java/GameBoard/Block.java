@@ -10,7 +10,6 @@ import javafx.scene.paint.Color;
 public class Block {
     private double[] pos;
     private double[] scale; 
-    private boolean alive = true;
     private Rectangle rect;
 
 
@@ -26,14 +25,9 @@ public class Block {
         return rect;
     }
     
-
+    // Delete the object from the gui
     public void kill() {
-        rect.setWidth(0);
-        alive = false;
-    }
-
-    public boolean isAlive() {
-        return alive;
+        App.removeElement(rect);
     }
 
     public void setPos(double x, double y) {
@@ -46,6 +40,6 @@ public class Block {
     }
 
     public String toString() {
-        return "is alive? " + isAlive() + " " + Arrays.toString(getPos());
+        return " " + Arrays.toString(getPos());
     }
 }

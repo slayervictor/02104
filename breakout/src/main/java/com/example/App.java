@@ -29,15 +29,16 @@ public class App extends Application {
         rootPane = (Pane) fxmlLoader.load();  // Initialize rootPane here
         stage.setResizable(false);
         PrimaryController controller = fxmlLoader.getController();
-        scene = new Scene(rootPane, 672, 970);
+        scene = new Scene(rootPane, width, height);
 
         scene.setFill(Color.web("#000000")); // Background
         
+        // Handle events 
         startTimeline(controller);
-        scene.setOnKeyReleased(event -> {
+        scene.setOnKeyReleased(event -> { // Key release event
             controller.stopHandling(event);
         });
-        scene.setOnKeyPressed(event -> {
+        scene.setOnKeyPressed(event -> { // Key press event
             controller.inputHandling(event);
         });
         stage.setScene(scene);
@@ -54,7 +55,7 @@ public class App extends Application {
         timeline.play();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    static void setRoot(String fxml) throws IOException { // Loads root from fxml
         scene.setRoot(loadFXML(fxml));
     }
 
@@ -79,20 +80,17 @@ public class App extends Application {
     }
 
     public static void removeElement(Shape shape) {
-        if (rootPane != null) {
-            rootPane.getChildren().remove(rootPane.getChildren().size()); // Add shape to rootPane
-        } else {
-            System.err.println("Error: Root pane is not initialized!");
-        }
+        rootPane.getChildren().remove(shape);
     }
+    
+    
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    private static Parent loadFXML(String fxml) throws IOException { // FXML loader from the vscode javafx project template
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
-        System.setProperty("prism.allowhidpi", "false");
+    public static void main(String[] args) { // Launching the game
         launch(args);
     }
 }

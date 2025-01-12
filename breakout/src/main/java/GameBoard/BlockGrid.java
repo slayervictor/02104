@@ -3,6 +3,8 @@ package GameBoard;
 import javafx.scene.paint.Color;
 import java.util.*;
 
+import com.example.App;
+
 public class BlockGrid {
     private HashSet<Block> blockGrid = new HashSet<Block>();
     private int m; // width
@@ -92,6 +94,12 @@ public class BlockGrid {
 
     public HashSet<Block> getBlockGrid() {
         return blockGrid;
+    }
+
+    public void removeBlock(Block block) {
+        block.kill();
+        blockGrid.remove(block);
+        block = null; // For garbage collection purposes, cause then we can actually get rid of the object from our memory ;)
     }
     
 }
