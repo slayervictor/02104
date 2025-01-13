@@ -28,7 +28,7 @@ public class PrimaryController {
             // Everything that needs to be ran once (and not run in initialize()), you can add here
             create = true;
         }
-        velocity = lerp(velocity, velocityGoal, 0.25);
+        velocity = lerp(velocity, velocityGoal, 0.125);
         if (pad.getX() + velocity < 672 - 10 - pad.getLength() && pad.getX()  +velocity > 10) {
             pad.move(velocity);
         } else {

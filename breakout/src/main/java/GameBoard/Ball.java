@@ -114,43 +114,29 @@ public class Ball {
     }
 
     public boolean collidesBlockHorizontal() {
-        boolean collisionDetected = false;
         for (Block b : blocks) {
-            boolean yCollides = (b.getPos()[1] + b.getRect().getHeight() >= getYPos() &&
-                                 b.getPos()[1] <= getYPos() + rect.getHeight());
-            boolean xCollides = (b.getPos()[0] <= getXPos() + velo[0] + rect.getWidth() &&
-                                 b.getPos()[0] + b.getRect().getWidth() >= getXPos() + velo[0]);
-    
-            if (xCollides && yCollides) {
+            if (b.getRect().intersects(pos[0]+velo[0],pos[1],rect.getWidth(),rect.getHeight())) {
                 blocks.remove(b);
                 blockGrid.removeBlock(b);
-                collisionDetected = true;
-                break;
+                return true;
             }
         }
-        return collisionDetected;
+        return false;
     }
-    
+
     public boolean collidesBlockVertical() {
-        boolean collisionDetected = false;
         for (Block b : blocks) {
-            boolean yCollides = (b.getPos()[1] + b.getRect().getHeight() >= getYPos() + velo[1] &&
-                                 b.getPos()[1] <= getYPos() + rect.getHeight() + velo[1]);
-            boolean xCollides = (b.getPos()[0] <= getXPos() &&
-                                 b.getPos()[0] + b.getRect().getWidth() >= getXPos() + rect.getWidth());
-    
-            if (xCollides && yCollides) {
+            if (b.getRect().intersects(pos[0],pos[1]+velo[1],rect.getWidth(),rect.getHeight())) {
                 blocks.remove(b);
                 blockGrid.removeBlock(b);
-                collisionDetected = true;
-                break;
+                return true;
             }
         }
-        return collisionDetected;
+        return false;
     }
     
     public boolean collidesTopPaddle() {
-        // Check if the ball is within the paddle's bounds horizontally and vertically
+        // Manual collision checking for the y axis
         boolean withinPaddleX = pad.getX() <= getXPos() + rect.getWidth() &&
                                 getXPos() <= pad.getX() + pad.getLength();
         boolean yCollides = pad.getY() <= getYPos() + velo[1] + rect.getHeight() &&
@@ -160,7 +146,7 @@ public class Ball {
     }
     
     public boolean collidesSidePaddle() {
-        // Check if the ball is within the paddle's bounds vertically and horizontally
+        // Manual collision checking for the x axis
         boolean withinPaddleY = pad.getY() <= getYPos() + rect.getHeight() &&
                                 getYPos() <= pad.getY() + pad.getHeight();
         boolean xCollides = pad.getX() <= getXPos() + velo[0] + rect.getWidth() &&
