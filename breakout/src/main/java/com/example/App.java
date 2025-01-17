@@ -13,14 +13,15 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.List;
 
 public class App extends Application {
 
     private static Scene scene;
     Parent root;
     private static Pane rootPane;
-    private double width = 672;
-    private double height = 970;
+    private double width = 672, height = 970;
+    private static int n, m;
     
 
     @Override
@@ -32,6 +33,33 @@ public class App extends Application {
         scene = new Scene(rootPane, width, height);
         scene.setFill(Color.web("#000000")); // Background
         
+        // get args from command to run program
+        Parameters param = getParameters();
+        List<String> args = param.getRaw();
+        try {
+        if (args.size() == 0) {
+            n = 10;
+            m = 20;
+        } else if (args.size() == 1) {
+            n = Integer.parseInt(args.get(0));
+            m = 10;
+        } else if (args.size() >= 2) {
+            n = Integer.parseInt(args.get(0));
+            m = Integer.parseInt(args.get(1));
+        }
+        } catch (Exception e) {
+            System.out.println("int n, int m where n={1,...,10} and m={5,...,20}");
+        }
+
+        // ensures that n and m are in the correct range
+        if (!(1 <= n) && !(n <= 10)) {
+            n = 10;
+        }
+
+        if (!(5 <= m) && !(m <= 20)) {
+            m = 20;
+        }
+
         // Handle events 
         startTimeline(controller);
         scene.setOnKeyReleased(event -> { // Key release event
@@ -68,6 +96,14 @@ public class App extends Application {
 
     public Parent getRoot() {
         return root;
+    }
+
+    public static int getN() {
+        return n;
+    }
+
+    public static int getM() {
+        return m;
     }
 
     public static void addElement(Shape shape) {

@@ -11,12 +11,8 @@ public class BlockGrid {
     private int n; // height
 
     public BlockGrid() {
-        Scanner console = new Scanner(System.in);
-        System.out.print("Please choose a height for the block field (1-10): ");
-        n = takeInput(console, 1, 10);
-        System.out.print("Please choose a width for the block field (5-20): ");
-        m = takeInput(console, 5, 20);
-        console.close();
+        n = App.getN();
+        m = App.getM();
         createField();
     }
 
