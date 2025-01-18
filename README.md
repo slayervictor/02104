@@ -16,7 +16,8 @@ java -jar simple-breakout.jar N M
 It is important to note that N={1,...,10} and m={5,...,20}.
 
 ### Keybindings
-To move left pres the 'H' key, and to move right press the 'L' key
+To move left pres the 'H' key, and to move right press the 'L' key.
+To start the game, press 'SPACE'
 
 ## Dependencies
 1. Java 21
