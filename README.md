@@ -2,7 +2,7 @@
 This is group 15's simple breakout for the January course 02104
 
 ## Installation
-1. Close the repository (UPDATE PATH WHEN PROGRAM IS FULLY COMPILED)
+1. Close the repository
 ```bash
 git clone https://github.com/slayervictor/02104
 ```
