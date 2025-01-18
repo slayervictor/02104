@@ -3,7 +3,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane maxHeight="970.0" maxWidth="672.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="970.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.PrimaryController">
+<AnchorPane maxHeight="970.0" maxWidth="672.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="970.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.PrimaryController">
    <children>
       <Rectangle fill="#cccccc" height="859.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
       <Rectangle fill="#cccccc" height="865.0" layoutX="662.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="11.0" />
