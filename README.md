@@ -1,7 +1,7 @@
 # 02104 Simple Breakout
 This is group 15's simple breakout for the January course 02104
 
-## installation
+## Installation
 1. Close the repository (UPDATE PATH WHEN PROGRAM IS FULLY COMPILED)
 ```bash
 git clone https://github.com/slayervictor/02104
@@ -14,7 +14,17 @@ git clone https://github.com/slayervictor/02104
 java -jar simple-breakout.jar N M
 ```
 It is important to note that N={1,...,10} and m={5,...,20}.
+
+### Keybindings
+To move left pres the 'h' key, and to move right press the 'l' key
+
+## Dependencies
+1. Java 21
+2. JavaFX (Compatible version) - for GUI elements
+3. Git - for installation
+
 ## Presets
+
 ### Easy
 ```bash
 java -jar simple-breakout.jar 3 5
